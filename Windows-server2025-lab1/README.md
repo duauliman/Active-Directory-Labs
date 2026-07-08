@@ -43,7 +43,7 @@ A hands-on home lab where I deployed **Windows Server 2025 (Evaluation)** on a V
 - Assigned a static IP, subnet mask, default gateway, and pointed the preferred DNS server at the server itself (required before promoting to a DC).
 - *(IP address redacted in screenshots/readme for privacy — shown as `192.168.X.X`.)*
 
-![Server Manager list showing the server registered with IP hidden](images/02-server-manager-list.png)
+![Server Manager list showing the server registered with IP hidden](02-server-manager-list.png)
 
 ### 5. Install AD DS Role & Promote to Domain Controller
 - In **Server Manager → Add Roles and Features**, installed the **Active Directory Domain Services** role.
@@ -59,7 +59,7 @@ A hands-on home lab where I deployed **Windows Server 2025 (Evaluation)** on a V
 - Completed **DHCP Post-Deployment Configuration** (authorized the DHCP server in AD).
 - Created a new **Scope** with an IP range, subnet mask, default gateway, and DNS server options so client VMs on the lab network receive addresses automatically.
 
-![Server confirmed online and activated](images/03-server-manager-activated.png)
+![Server confirmed online and activated](03-server-manager-activated.png)
 
 ### 8. Create Organizational Unit, Users & Security Group
 - Opened **Active Directory Users and Computers (ADUC)**.
@@ -69,7 +69,7 @@ A hands-on home lab where I deployed **Windows Server 2025 (Evaluation)** on a V
   - One security group: `It groups`
 - Added both users as members of the `It groups` security group.
 
-![AD Users and Computers – IT OU with users and group](images/04-ad-users-and-groups.png)
+![AD Users and Computers – IT OU with users and group](04-ad-users-and-groups.png)
 
 ### 9. Create & Link a GPO to Restrict Control Panel
 - Opened **Group Policy Management Console (GPMC)**.
@@ -80,7 +80,7 @@ A hands-on home lab where I deployed **Windows Server 2025 (Evaluation)** on a V
 - Linked the GPO to the **It** OU so it applies to members of the `It groups` security group.
 - Confirmed the link in GPMC: Link Enabled = Yes, GPO Status = Enabled, Enforced = Yes.
 
-![GPO linked to the IT OU](images/05-gpo-restrict-controlpanel.png)
+![GPO linked to the IT OU](05-gpo-restrict-controlpanel.png)
 
 ### 10. Validate
 - Logged in as `sarah ali` on a domain-joined client and confirmed Control Panel access is blocked, verifying the GPO applied correctly through group membership + OU linking.
